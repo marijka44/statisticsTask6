@@ -11,7 +11,7 @@ public class StatsService {
         return maxMonth;
     }
 
-    public long sum(int[] sales) {
+    public int sum(int[] sales) {
         int sum = 0;
         for (int sale : sales) {
             sum += sale;
@@ -30,38 +30,28 @@ public class StatsService {
     }
 
     public int sumAverage(int[] sales) {
-        int sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-        }
+        int sum = sum(sales);
+
         return sum / sales.length;
     }
 
     public int abodeAverage(int[] sales) {
-        int sum = 0;
-        int abodeAverageSum = 0;
-        int averageSum;
-        for (int sale : sales) {
-            sum += sale;
-        }
-        averageSum = sum / sales.length;
+        int averageSum = sumAverage(sales);
+        int aboveAverageSum = 0;
+
         for (int sale : sales) {
             if (sale > averageSum) {
-                abodeAverageSum++;
+                aboveAverageSum++;
             }
         }
-        return abodeAverageSum;
+        return aboveAverageSum;
 
     }
 
     public int belowTheAverage(int[] sales) {
-        int sum = 0;
+        int averageSum = sumAverage(sales);
         int belowTheAverage = 0;
-        int averageSum;
-        for (int sale : sales) {
-            sum += sale;
-        }
-        averageSum = sum / sales.length;
+
         for (int sale : sales) {
             if (sale < averageSum) {
                 belowTheAverage++;
